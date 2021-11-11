@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <chrono>
+
 
 using namespace std;
 
@@ -43,6 +45,7 @@ int main(int argc, char *argv[]) {
   file.close();
 
   //Multiplica matrizes
+  auto begin = chrono::high_resolution_clock::now();  
   for (int i = 0; i < n1; i++) {
     result.push_back(vector<int>());
     for (int j = 0; j < m2; j++) {
@@ -52,6 +55,10 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  auto end = chrono::high_resolution_clock::now();
+  auto totalTime = chrono::duration_cast<chrono::milliseconds>(end - begin).count();
+  
+  cout << "Tempo de execução: " << totalTime << "ms" << endl;
 
   //Salva resultado em arquivo
   file.open("data/result_sequencial.txt", fstream::out);
@@ -62,6 +69,8 @@ int main(int argc, char *argv[]) {
       file << 'c' << i+1 << j+1 << ' ' << result[i][j] << endl;
     }
   }
+
+  file << totalTime;
 
   file.close();
 

@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < n1; i++) {
     for (int j = 0; j < m1; j++) {
-      file << matrix1[i][j] << (j < m1 - 1 ? ' ' : endl);
+      file << matrix1[i][j] << (j < m1 - 1 ? ' ' : '\n');
     }
   }
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < n2; i++) {
     for (int j = 0; j < m2; j++) {
-      file << matrix2[i][j] << (j < m2 - 1 ? ' ' : endl);
+      file << matrix2[i][j] << (j < m2 - 1 ? ' ' : '\n');
     }
   }
 
